@@ -54,7 +54,7 @@ export default function Home() {
   useEffect(() => {
     const observerCallback: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.4) {
+        if (entry.isIntersecting) {
           setActiveSectionId(entry.target.id);
           if (typeof window !== "undefined") {
             window.history.replaceState(null, "", `#${entry.target.id}`);
@@ -65,7 +65,8 @@ export default function Home() {
 
     const observerOptions = {
       root: null,
-      threshold: [0.4, 0.6],
+      rootMargin: "-20% 0px -60% 0px",
+      threshold: 0,
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
@@ -79,8 +80,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#f8fafc] text-slate-900 overflow-x-hidden">
-      {/* Subtle Ambient Canvas Background */}
+    <div className="relative min-h-screen bg-[#faf7f2] text-stone-900 overflow-x-hidden">
+      {/* Subtle Warm Ambient Background */}
       <FuturisticBackground />
 
       {/* Top Fixed Header Navigation */}
@@ -89,7 +90,7 @@ export default function Home() {
       {/* Slide Deck / Scroll Container */}
       <main
         ref={containerRef}
-        className="relative z-10 w-full pt-16 sm:pt-20 lg:pt-8 slide-container"
+        className="relative z-10 w-full pt-14 sm:pt-16 lg:pt-16 slide-container"
       >
         {/* Slide 01: Hero */}
         <section id="hero" className="slide-section w-full">
@@ -127,7 +128,7 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Persistent Christoph Nagel Floating Slide Navigator Controls */}
+      {/* Persistent Floating Slide Navigator Controls */}
       <SlideNavigator activeSectionId={activeSectionId} onNavigate={handleNavigate} />
     </div>
   );

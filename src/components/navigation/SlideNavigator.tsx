@@ -73,7 +73,7 @@ export default function SlideNavigator({ activeSectionId, onNavigate }: SlideNav
                 className={`text-[11px] font-mono uppercase tracking-wider transition-all duration-200 opacity-0 group-hover:opacity-100 ${
                   isActive
                     ? "text-indigo-600 font-bold translate-x-0 opacity-100"
-                    : "text-slate-400 group-hover:translate-x-0 translate-x-1"
+                    : "text-stone-400 group-hover:translate-x-0 translate-x-1"
                 }`}
               >
                 {section.label}
@@ -82,8 +82,8 @@ export default function SlideNavigator({ activeSectionId, onNavigate }: SlideNav
               <div
                 className={`transition-all duration-200 rounded-full ${
                   isActive
-                    ? "w-6 h-2 bg-indigo-600 shadow-sm"
-                    : "w-2 h-2 bg-slate-300 hover:bg-slate-400 hover:scale-125"
+                    ? "w-6 h-2 bg-indigo-600 shadow-2xs"
+                    : "w-2 h-2 bg-stone-300 hover:bg-stone-400 hover:scale-125"
                 }`}
               />
             </button>
@@ -92,18 +92,18 @@ export default function SlideNavigator({ activeSectionId, onNavigate }: SlideNav
       </nav>
 
       {/* Floating Bottom-Right Controller */}
-      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2 p-1.5 rounded-full bg-white/95 border border-slate-200/90 shadow-lg backdrop-blur-md pointer-events-auto">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2 p-1.5 rounded-full bg-[#faf7f2]/95 border border-[#e5dfd3] shadow-md backdrop-blur-md pointer-events-auto">
         {/* Section Counter */}
         <div className="pl-3 pr-2 flex items-center font-mono text-xs">
           <span className="text-indigo-600 font-bold">{currentNumberStr}</span>
-          <span className="text-slate-300 mx-1">/</span>
-          <span className="text-slate-500">{totalNumberStr}</span>
-          <span className="ml-2 hidden sm:inline text-[11px] uppercase tracking-wider text-slate-500 font-medium max-w-[75px] truncate">
+          <span className="text-stone-300 mx-1">/</span>
+          <span className="text-stone-500">{totalNumberStr}</span>
+          <span className="ml-2 hidden sm:inline text-[11px] uppercase tracking-wider text-stone-500 font-medium max-w-[75px] truncate">
             {currentSection.label}
           </span>
         </div>
 
-        <div className="h-3.5 w-[1px] bg-slate-200" />
+        <div className="h-3.5 w-[1px] bg-[#e5dfd3]" />
 
         {/* Previous Button */}
         <button
@@ -112,8 +112,8 @@ export default function SlideNavigator({ activeSectionId, onNavigate }: SlideNav
           aria-label="Previous Slide (Arrow Up)"
           className={`p-1.5 rounded-full transition-all duration-150 cursor-pointer ${
             safeIndex === 0
-              ? "opacity-25 cursor-not-allowed text-slate-400"
-              : "text-slate-700 hover:text-indigo-600 hover:bg-slate-100 active:scale-95"
+              ? "opacity-25 cursor-not-allowed text-stone-400"
+              : "text-stone-700 hover:text-indigo-600 hover:bg-[#f4efe6] active:scale-95"
           }`}
           title="Previous section (Arrow Up / Page Up)"
         >
@@ -127,8 +127,8 @@ export default function SlideNavigator({ activeSectionId, onNavigate }: SlideNav
           aria-label="Next Slide (Arrow Down)"
           className={`p-1.5 rounded-full transition-all duration-150 cursor-pointer ${
             safeIndex === totalSections - 1
-              ? "opacity-25 cursor-not-allowed text-slate-400"
-              : "text-slate-700 hover:text-indigo-600 hover:bg-slate-100 active:scale-95"
+              ? "opacity-25 cursor-not-allowed text-stone-400"
+              : "text-stone-700 hover:text-indigo-600 hover:bg-[#f4efe6] active:scale-95"
           }`}
           title="Next section (Arrow Down / Page Down)"
         >

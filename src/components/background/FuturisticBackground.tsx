@@ -26,7 +26,7 @@ export default function FuturisticBackground() {
 
     window.addEventListener("resize", handleResize);
 
-    const particleCount = Math.min(Math.floor((width * height) / 28000), 30);
+    const particleCount = Math.min(Math.floor((width * height) / 32000), 24);
     const particles: {
       x: number;
       y: number;
@@ -40,10 +40,10 @@ export default function FuturisticBackground() {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.5) * 0.25,
-        radius: Math.random() * 1.2 + 0.6,
-        alpha: Math.random() * 0.25 + 0.1,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2,
+        radius: Math.random() * 1.2 + 0.5,
+        alpha: Math.random() * 0.2 + 0.1,
       });
     }
 
@@ -62,7 +62,7 @@ export default function FuturisticBackground() {
 
         ctx.beginPath();
         ctx.arc(p1.x, p1.y, p1.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(79, 70, 229, ${p1.alpha * 0.4})`;
+        ctx.fillStyle = `rgba(120, 113, 108, ${p1.alpha * 0.5})`;
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -71,12 +71,12 @@ export default function FuturisticBackground() {
           const dy = p1.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 110) {
+          if (dist < 100) {
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            const lineAlpha = (1 - dist / 110) * 0.06;
-            ctx.strokeStyle = `rgba(148, 163, 184, ${lineAlpha})`;
+            const lineAlpha = (1 - dist / 100) * 0.05;
+            ctx.strokeStyle = `rgba(168, 162, 158, ${lineAlpha})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -95,23 +95,22 @@ export default function FuturisticBackground() {
   }, []);
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-gradient-to-b from-[#f8fafc] via-[#f1f5f9] to-[#f8fafc]">
-      {/* Soft natural ambient lighting */}
-      <div className="absolute -top-40 -left-40 h-[32rem] w-[32rem] rounded-full bg-blue-200/35 blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/3 -right-40 h-[36rem] w-[36rem] rounded-full bg-indigo-200/30 blur-[130px] pointer-events-none" />
-      <div className="absolute -bottom-40 left-1/3 h-[28rem] w-[28rem] rounded-full bg-sky-200/25 blur-[110px] pointer-events-none" />
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-gradient-to-b from-[#faf7f2] via-[#f5f0e6] to-[#faf7f2]">
+      {/* Warm natural ambient blurs */}
+      <div className="absolute -top-32 -left-32 h-[30rem] w-[30rem] rounded-full bg-amber-100/40 blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/3 -right-32 h-[34rem] w-[34rem] rounded-full bg-orange-100/25 blur-[140px] pointer-events-none" />
+      <div className="absolute -bottom-32 left-1/3 h-[28rem] w-[28rem] rounded-full bg-stone-200/30 blur-[120px] pointer-events-none" />
 
-      {/* Subtle modern dot grid */}
+      {/* Warm stone dot pattern */}
       <div
         className="absolute inset-0 opacity-[0.035] pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(#475569 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(#78716c 1px, transparent 1px)`,
           backgroundSize: "28px 28px",
         }}
       />
 
-      {/* Subtle interactive node canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full opacity-40" />
+      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full opacity-35" />
     </div>
   );
 }

@@ -44,14 +44,14 @@ export default function ProjectsSection({ onNavigate }: ProjectsSectionProps) {
       : projectsData.filter((p) => (p.company ? p.company.includes(selectedFilter.split(" ")[0]) : true));
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20 flex flex-col justify-center">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-4 flex flex-col justify-center">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 pb-3 sm:pb-4 border-b border-slate-200">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-5 sm:mb-6 pb-3 sm:pb-4 border-b border-[#e5dfd3]">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-indigo-600 mb-1">
+          <div className="flex items-center gap-2 text-xs font-mono text-indigo-600 mb-1 font-medium">
             <span>04 // PRODUCTION &amp; AI LABS</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-stone-900">
             Featured Projects &amp; AI Research
           </h2>
         </div>
@@ -62,8 +62,8 @@ export default function ProjectsSection({ onNavigate }: ProjectsSectionProps) {
               onClick={() => setSelectedFilter(opt)}
               className={`px-3 py-1.5 rounded-xl text-xs font-mono whitespace-nowrap transition-all cursor-pointer ${
                 selectedFilter === opt
-                  ? "bg-slate-900 text-white font-medium shadow-xs"
-                  : "bg-white text-slate-600 border border-slate-200 hover:text-slate-900 hover:border-slate-300"
+                  ? "bg-stone-900 text-white font-medium shadow-xs"
+                  : "bg-white text-stone-600 border border-[#e5dfd3] hover:text-stone-900 hover:border-stone-400"
               }`}
             >
               {opt}
@@ -77,15 +77,15 @@ export default function ProjectsSection({ onNavigate }: ProjectsSectionProps) {
         {filteredProjects.map((project) => (
           <div
             key={project.id}
-            className="rounded-2xl bg-white border border-slate-200 hover:border-slate-300 p-4 sm:p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-md flex flex-col justify-between group"
+            className="rounded-2xl bg-white border border-[#e5dfd3] hover:border-[#cfc7b7] p-4 sm:p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-md flex flex-col justify-between group"
           >
             <div>
               {/* Card Top: Banner */}
-              <div className="relative h-32 sm:h-36 w-full rounded-xl bg-slate-100/90 border border-slate-200/80 p-3 mb-3 flex flex-col justify-between overflow-hidden">
+              <div className="relative h-32 sm:h-36 w-full rounded-xl bg-[#f8f5ee] border border-[#e7e2d6] p-3 mb-3 flex flex-col justify-between overflow-hidden">
                 <div
-                  className="absolute inset-0 opacity-20 pointer-events-none"
+                  className="absolute inset-0 opacity-25 pointer-events-none"
                   style={{
-                    backgroundImage: `radial-gradient(#94a3b8 1px, transparent 1px)`,
+                    backgroundImage: `radial-gradient(#a8a29e 1px, transparent 1px)`,
                     backgroundSize: "14px 14px",
                   }}
                 />
@@ -93,11 +93,11 @@ export default function ProjectsSection({ onNavigate }: ProjectsSectionProps) {
                 {/* Top badges */}
                 <div className="relative z-10 flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <div className="p-1.5 rounded-lg bg-white border border-slate-200 shadow-2xs">
-                      {projectIcons[project.id] || <Layers className="w-4 h-4 text-slate-700" />}
+                    <div className="p-1.5 rounded-lg bg-white border border-[#e5dfd3] shadow-2xs">
+                      {projectIcons[project.id] || <Layers className="w-4 h-4 text-stone-700" />}
                     </div>
                     {project.company && (
-                      <span className="text-[11px] font-mono text-slate-700 bg-white/90 px-2 py-0.5 rounded border border-slate-200 shadow-2xs font-medium">
+                      <span className="text-[11px] font-mono text-stone-700 bg-white/95 px-2 py-0.5 rounded border border-[#e5dfd3] shadow-2xs font-medium">
                         {project.company}
                       </span>
                     )}
@@ -118,16 +118,16 @@ export default function ProjectsSection({ onNavigate }: ProjectsSectionProps) {
 
                 {/* Architecture mini-nodes */}
                 {project.architectureDiagram && (
-                  <div className="relative z-10 hidden sm:flex items-center justify-between gap-1 px-2 py-1 rounded bg-white/90 border border-slate-200 font-mono text-[9px] text-slate-600 shadow-2xs">
+                  <div className="relative z-10 hidden sm:flex items-center justify-between gap-1 px-2 py-1 rounded bg-white/95 border border-[#e5dfd3] font-mono text-[9px] text-stone-600 shadow-2xs">
                     <span className="text-indigo-600 font-medium truncate">
                       {project.architectureDiagram.nodes[0]?.label}
                     </span>
-                    <span className="text-slate-400">&rarr;</span>
+                    <span className="text-stone-400">&rarr;</span>
                     <span className="text-emerald-700 font-medium truncate">
                       {project.architectureDiagram.nodes[1]?.label}
                     </span>
-                    <span className="text-slate-400">&rarr;</span>
-                    <span className="text-slate-700 truncate">
+                    <span className="text-stone-400">&rarr;</span>
+                    <span className="text-stone-700 truncate">
                       {project.architectureDiagram.nodes[2]?.label}
                     </span>
                   </div>
@@ -136,19 +136,19 @@ export default function ProjectsSection({ onNavigate }: ProjectsSectionProps) {
 
               {/* Title and subtitle */}
               <div className="space-y-1">
-                <h3 className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-1">
+                <h3 className="text-sm sm:text-base font-bold text-stone-900 group-hover:text-indigo-600 transition-colors line-clamp-1">
                   {project.title}
                 </h3>
-                <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
+                <p className="text-xs text-stone-600 leading-relaxed line-clamp-2">
                   {project.subtitle}
                 </p>
               </div>
 
               {/* Impact / Outcome */}
-              <div className="mt-2.5 p-2 rounded-lg bg-slate-50 border border-slate-200 text-[11px] text-slate-700 flex items-start gap-2">
+              <div className="mt-2.5 p-2.5 rounded-lg bg-[#fbf9f5] border border-[#e7e2d6] text-[11px] text-stone-700 flex items-start gap-2">
                 <Sparkles className="w-3.5 h-3.5 text-indigo-600 shrink-0 mt-0.5" />
                 <span className="leading-tight line-clamp-2">
-                  <strong className="text-slate-900">Outcome:</strong> {project.outcome}
+                  <strong className="text-stone-900">Outcome:</strong> {project.outcome}
                 </span>
               </div>
 
@@ -157,13 +157,13 @@ export default function ProjectsSection({ onNavigate }: ProjectsSectionProps) {
                 {project.techStack.slice(0, 4).map((tech) => (
                   <span
                     key={tech}
-                    className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200/60 font-medium"
+                    className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#f4efe6] text-stone-700 border border-[#e5dfd3] font-medium"
                   >
                     {tech}
                   </span>
                 ))}
                 {project.techStack.length > 4 && (
-                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-50 text-slate-500">
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#fbf9f5] text-stone-500 border border-[#e5dfd3]">
                     +{project.techStack.length - 4}
                   </span>
                 )}
@@ -171,19 +171,19 @@ export default function ProjectsSection({ onNavigate }: ProjectsSectionProps) {
             </div>
 
             {/* Bottom Actions */}
-            <div className="mt-3.5 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+            <div className="mt-3.5 pt-2.5 border-t border-[#ede7db] flex items-center justify-between">
               {project.demoUrl ? (
                 <a
                   href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-[11px] font-mono text-slate-600 hover:text-slate-900 transition-colors font-medium"
+                  className="inline-flex items-center gap-1 text-[11px] font-mono text-stone-600 hover:text-stone-900 transition-colors font-medium"
                 >
-                  <MediumIcon className="w-3 h-3 text-slate-900" />
+                  <MediumIcon className="w-3 h-3 text-stone-900" />
                   <span>Medium Article</span>
                 </a>
               ) : (
-                <span className="text-[10px] font-mono text-slate-400">
+                <span className="text-[10px] font-mono text-stone-400">
                   {project.isPrivate ? "Proprietary Code" : "Public Repo"}
                 </span>
               )}
@@ -201,7 +201,7 @@ export default function ProjectsSection({ onNavigate }: ProjectsSectionProps) {
       </div>
 
       {/* Footer link to Experience */}
-      <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs font-mono text-slate-500 gap-2">
+      <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs font-mono text-stone-500 gap-2">
         <span>Combining enterprise engineering rigor with cutting-edge AI experimentation</span>
         <button
           onClick={() => onNavigate("experience")}

@@ -20,22 +20,22 @@ export default function HeaderNav({ activeSectionId, onNavigate }: HeaderNavProp
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 py-2.5 sm:py-3 transition-all duration-300">
-      <div className="max-w-7xl mx-auto flex items-center justify-between bg-white/85 backdrop-blur-md px-4 py-2 rounded-2xl border border-slate-200/90 shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 py-2 sm:py-2.5 transition-all duration-300">
+      <div className="max-w-7xl mx-auto flex items-center justify-between bg-[#faf7f2]/90 backdrop-blur-md px-4 py-2 rounded-2xl border border-[#e5dfd3] shadow-xs">
         {/* Brand / Logo */}
         <button
           onClick={() => handleLinkClick("hero")}
           className="flex items-center gap-2.5 group cursor-pointer focus:outline-none"
         >
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-slate-900 to-indigo-700 flex items-center justify-center text-white font-bold font-mono text-sm shadow-sm group-hover:scale-105 transition-transform">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-stone-900 to-indigo-800 flex items-center justify-center text-white font-bold font-mono text-sm shadow-xs group-hover:scale-105 transition-transform">
             MP
           </div>
           <div className="text-left">
-            <span className="font-semibold text-sm tracking-tight text-slate-900 group-hover:text-indigo-600 transition-colors flex items-center gap-1.5">
+            <span className="font-semibold text-sm tracking-tight text-stone-900 group-hover:text-indigo-600 transition-colors flex items-center gap-1.5">
               Manish Parajuli
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             </span>
-            <span className="block text-[10px] font-mono text-slate-500">
+            <span className="block text-[10px] font-mono text-stone-500">
               Full-Stack &middot; AI Builder
             </span>
           </div>
@@ -51,8 +51,8 @@ export default function HeaderNav({ activeSectionId, onNavigate }: HeaderNavProp
                 onClick={() => handleLinkClick(sec.id)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-150 cursor-pointer ${
                   isActive
-                    ? "text-indigo-600 bg-indigo-50 font-semibold border border-indigo-200/70"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/70"
+                    ? "text-indigo-600 bg-white font-semibold border border-[#e5dfd3] shadow-2xs"
+                    : "text-stone-600 hover:text-stone-900 hover:bg-[#f4efe6]"
                 }`}
               >
                 <span className="opacity-40 mr-1">{sec.number}</span>
@@ -63,14 +63,14 @@ export default function HeaderNav({ activeSectionId, onNavigate }: HeaderNavProp
         </nav>
 
         {/* Right Actions: Socials & Resume CTA */}
-        <div className="hidden sm:flex items-center gap-2">
+        <div className="hidden sm:flex items-center gap-1.5">
           <a
             href={profileData.socialLinks.medium}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Medium Articles"
             title="Medium Articles"
-            className="p-2 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+            className="p-2 rounded-lg text-stone-600 hover:text-stone-900 hover:bg-[#f4efe6] transition-colors"
           >
             <MediumIcon className="w-4 h-4" />
           </a>
@@ -79,7 +79,7 @@ export default function HeaderNav({ activeSectionId, onNavigate }: HeaderNavProp
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Profile"
-            className="p-2 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+            className="p-2 rounded-lg text-stone-600 hover:text-stone-900 hover:bg-[#f4efe6] transition-colors"
           >
             <GitHubIcon className="w-4 h-4" />
           </a>
@@ -88,14 +88,14 @@ export default function HeaderNav({ activeSectionId, onNavigate }: HeaderNavProp
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
-            className="p-2 rounded-lg text-slate-500 hover:text-indigo-600 hover:bg-slate-100 transition-colors"
+            className="p-2 rounded-lg text-stone-600 hover:text-indigo-600 hover:bg-[#f4efe6] transition-colors"
           >
             <LinkedInIcon className="w-4 h-4" />
           </a>
           <a
             href="/resume.pdf"
             download="Manish_Parajuli_Resume.pdf"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-slate-800 bg-slate-100 hover:bg-slate-200/80 border border-slate-200 transition-all shadow-xs"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-stone-800 bg-[#f4efe6] hover:bg-[#eae3d5] border border-[#e5dfd3] transition-all shadow-2xs ml-1"
           >
             <FileText className="w-3.5 h-3.5" />
             <span>Resume</span>
@@ -105,7 +105,7 @@ export default function HeaderNav({ activeSectionId, onNavigate }: HeaderNavProp
         {/* Mobile Hamburger Toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100"
+          className="md:hidden p-2 rounded-lg text-stone-700 hover:text-stone-900 hover:bg-[#f4efe6]"
           aria-label="Toggle menu"
         >
           {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -114,7 +114,7 @@ export default function HeaderNav({ activeSectionId, onNavigate }: HeaderNavProp
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-2 p-4 rounded-2xl bg-white border border-slate-200 shadow-xl flex flex-col gap-2 animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="md:hidden mt-2 p-4 rounded-2xl bg-[#faf7f2] border border-[#e5dfd3] shadow-xl flex flex-col gap-2 animate-in fade-in slide-in-from-top-2 duration-200">
           {navigationSections.map((sec) => {
             const isActive = sec.id === activeSectionId;
             return (
@@ -123,22 +123,22 @@ export default function HeaderNav({ activeSectionId, onNavigate }: HeaderNavProp
                 onClick={() => handleLinkClick(sec.id)}
                 className={`flex items-center justify-between px-3 py-2 rounded-lg text-sm font-mono text-left transition-all ${
                   isActive
-                    ? "text-indigo-600 bg-indigo-50 font-semibold border border-indigo-200"
-                    : "text-slate-700 hover:text-slate-900 hover:bg-slate-50"
+                    ? "text-indigo-600 bg-white font-semibold border border-[#e5dfd3]"
+                    : "text-stone-700 hover:text-stone-900 hover:bg-[#f4efe6]"
                 }`}
               >
                 <span>{sec.label}</span>
-                <span className="text-xs text-slate-400">{sec.number}</span>
+                <span className="text-xs text-stone-400">{sec.number}</span>
               </button>
             );
           })}
-          <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
+          <div className="pt-2 border-t border-[#e5dfd3] flex items-center justify-between">
             <div className="flex gap-2">
               <a
                 href={profileData.socialLinks.medium}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-slate-600 hover:text-slate-900"
+                className="p-2 text-stone-600 hover:text-stone-900"
                 aria-label="Medium"
               >
                 <MediumIcon className="w-4 h-4" />
@@ -147,7 +147,7 @@ export default function HeaderNav({ activeSectionId, onNavigate }: HeaderNavProp
                 href={profileData.socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-slate-600 hover:text-slate-900"
+                className="p-2 text-stone-600 hover:text-stone-900"
                 aria-label="GitHub"
               >
                 <GitHubIcon className="w-4 h-4" />
@@ -156,7 +156,7 @@ export default function HeaderNav({ activeSectionId, onNavigate }: HeaderNavProp
                 href={profileData.socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-slate-600 hover:text-indigo-600"
+                className="p-2 text-stone-600 hover:text-indigo-600"
                 aria-label="LinkedIn"
               >
                 <LinkedInIcon className="w-4 h-4" />
@@ -165,7 +165,7 @@ export default function HeaderNav({ activeSectionId, onNavigate }: HeaderNavProp
             <a
               href="/resume.pdf"
               download="Manish_Parajuli_Resume.pdf"
-              className="px-3 py-1.5 rounded-lg text-xs font-mono text-indigo-700 bg-indigo-50 border border-indigo-200 font-medium"
+              className="px-3 py-1.5 rounded-lg text-xs font-mono text-stone-800 bg-[#f4efe6] border border-[#e5dfd3] font-medium"
             >
               Resume PDF
             </a>
