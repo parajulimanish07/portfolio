@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import FuturisticBackground from "@/components/background/FuturisticBackground";
+import DepthEffects from "@/components/effects/DepthEffects";
 import HeaderNav from "@/components/navigation/HeaderNav";
 import SlideNavigator from "@/components/navigation/SlideNavigator";
 import HeroSection from "@/components/hero/HeroSection";
@@ -83,6 +84,9 @@ export default function Home() {
     <div className="relative min-h-screen bg-[#faf7f2] text-stone-900 overflow-x-hidden">
       {/* Subtle Warm Ambient Background */}
       <FuturisticBackground />
+
+      {/* 3D reveal and cursor tilt for cards below the hero */}
+      <DepthEffects />
 
       {/* Top Fixed Header Navigation */}
       <HeaderNav activeSectionId={activeSectionId} onNavigate={handleNavigate} />

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import dynamic from "next/dynamic";
 import {
   ArrowRight,
   Download,
@@ -13,6 +13,12 @@ import {
 } from "lucide-react";
 import { GitHubIcon, LinkedInIcon, MediumIcon } from "@/components/icons/SocialIcons";
 import { profileData } from "@/data/profile";
+
+// The 3D scene needs WebGL, so it loads in the browser only and stays out of the first bundle.
+const AvatarScene = dynamic(() => import("@/components/hero/AvatarScene"), {
+  ssr: false,
+  loading: () => <div className="w-full h-[330px] sm:h-[400px] lg:h-[420px]" aria-hidden="true" />,
+});
 
 interface HeroSectionProps {
   onNavigate: (sectionId: string) => void;
@@ -185,8 +191,10 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* Right Column: LIGHT Off-White Terminal Console & Profile Photo Preview */}
-        <div className="lg:col-span-5 flex flex-col gap-3.5">
+        {/* Right Column: 3D avatar scene above the terminal console */}
+        <div className="lg:col-span-5 flex flex-col gap-2">
+          <AvatarScene />
+
           {/* Light Off-White Developer Terminal Console */}
           <div className="rounded-2xl bg-white border border-[#e5dfd3] shadow-md overflow-hidden">
             {/* Terminal Window Header Bar (Light macOS style) */}
@@ -235,38 +243,6 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
                   <span className="inline-block w-1.5 h-3 bg-indigo-600 animate-pulse" />
                 </p>
               </div>
-            </div>
-          </div>
-
-          {/* Profile Card Preview */}
-          <div className="p-3 rounded-2xl bg-white border border-[#e5dfd3] shadow-xs flex items-center gap-3.5">
-            <div className="relative w-12 sm:w-14 h-12 sm:h-14 rounded-xl overflow-hidden border border-stone-200 shrink-0 shadow-2xs">
-              <Image
-                src="/images/manish.jpg"
-                alt="Manish Parajuli - Sydney, NSW"
-                fill
-                className="object-cover object-center"
-                sizes="56px"
-                priority
-              />
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center justify-between">
-                <p className="text-xs sm:text-sm font-semibold text-stone-900 truncate">Manish Parajuli</p>
-                <span className="text-[10px] font-mono text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-medium">
-                  Full-Stack &amp; AI
-                </span>
-              </div>
-              <p className="text-[11px] text-stone-500 truncate mt-0.5">
-                NMI &middot; Macquarie AI &middot; Sydney, NSW
-              </p>
-              <button
-                onClick={() => onNavigate("writing")}
-                className="text-[11px] font-mono text-indigo-600 hover:text-indigo-800 mt-1 inline-flex items-center gap-1 group cursor-pointer font-medium"
-              >
-                <span>Read Medium articles on LangGraph &amp; RAG</span>
-                <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-              </button>
             </div>
           </div>
         </div>
